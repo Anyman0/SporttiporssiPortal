@@ -1,0 +1,244 @@
+﻿@model SporttiporssiPortal.Models.Player
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Player</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />          
+            <div class="form-group">
+                <label asp-for="PlayerId" class="control-label"></label>
+                <input asp-for="PlayerId" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="PlayerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamId" class="control-label"></label>
+                <input asp-for="TeamId" class="form-control" />
+                <span asp-validation-for="TeamId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamName" class="control-label"></label>
+                <input asp-for="TeamName" class="form-control" />
+                <span asp-validation-for="TeamName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamShortName" class="control-label"></label>
+                <input asp-for="TeamShortName" class="form-control" />
+                <span asp-validation-for="TeamShortName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <input asp-for="Role" class="form-control" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nationality" class="control-label"></label>
+                <input asp-for="Nationality" class="form-control" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tournament" class="control-label"></label>
+                <input asp-for="Tournament" class="form-control" />
+                <span asp-validation-for="Tournament" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PictureUrl" class="control-label"></label>
+                <input asp-for="PictureUrl" class="form-control" />
+                <span asp-validation-for="PictureUrl" class="text-danger"></span>
+            </div>           
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Injured" /> @Html.DisplayNameFor(model => model.Injured)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jersey" class="control-label"></label>
+                <input asp-for="Jersey" class="form-control" />
+                <span asp-validation-for="Jersey" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Goalkeeper" /> @Html.DisplayNameFor(model => model.Goalkeeper)
+                </label>
+            </div>           
+            <div class="form-group">
+                <label asp-for="PlayedGames" class="control-label"></label>
+                <input asp-for="PlayedGames" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="PlayedGames" class="text-danger"></span>
+            </div>         
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Suspended" /> @Html.DisplayNameFor(model => model.Suspended)
+                </label>
+            </div>           
+            <div class="form-group">
+                <label asp-for="TimeOnIce" class="control-label"></label>
+                <input asp-for="TimeOnIce" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="TimeOnIce" class="text-danger"></span>
+            </div>          
+            <div class="form-group">
+                <label asp-for="Goals" class="control-label"></label>
+                <input asp-for="Goals" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Goals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assists" class="control-label"></label>
+                <input asp-for="Assists" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Assists" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Points" class="control-label"></label>
+                <input asp-for="Points" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Points" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plus" class="control-label"></label>
+                <input asp-for="Plus" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Plus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Minus" class="control-label"></label>
+                <input asp-for="Minus" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Minus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlusMinus" class="control-label"></label>
+                <input asp-for="PlusMinus" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="PlusMinus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PenaltyMinutes" class="control-label"></label>
+                <input asp-for="PenaltyMinutes" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="PenaltyMinutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Penalty2" class="control-label"></label>
+                <input asp-for="Penalty2" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Penalty2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Penalty10" class="control-label"></label>
+                <input asp-for="Penalty10" readonly style="background-color: #e9ecef;"  class="form-control" />
+                <span asp-validation-for="Penalty10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Penalty20" class="control-label"></label>
+                <input asp-for="Penalty20" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Penalty20" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="WinningGoals" class="control-label"></label>
+                <input asp-for="WinningGoals" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="WinningGoals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shots" class="control-label"></label>
+                <input asp-for="Shots" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Shots" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saves" class="control-label"></label>
+                <input asp-for="Saves" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Saves" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalieShutout" class="control-label"></label>
+                <input asp-for="GoalieShutout" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="GoalieShutout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AllowedGoals" class="control-label"></label>
+                <input asp-for="AllowedGoals" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="AllowedGoals" class="text-danger"></span>
+            </div>         
+            <div class="form-group">
+                <label asp-for="FaceoffsWon" class="control-label"></label>
+                <input asp-for="FaceoffsWon" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="FaceoffsWon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FaceoffsLost" class="control-label"></label>
+                <input asp-for="FaceoffsLost" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="FaceoffsLost" class="text-danger"></span>
+            </div>           
+            <div class="form-group">
+                <label asp-for="TimeOnIceAvg" class="control-label"></label>
+                <input asp-for="TimeOnIceAvg" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="TimeOnIceAvg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FaceoffWonPercentage" class="control-label"></label>
+                <input asp-for="FaceoffWonPercentage" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="FaceoffWonPercentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShotPercentage" class="control-label"></label>
+                <input asp-for="ShotPercentage" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="ShotPercentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FaceoffsTotal" class="control-label"></label>
+                <input asp-for="FaceoffsTotal" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="FaceoffsTotal" class="text-danger"></span>
+            </div>         
+            <div class="form-group">
+                <label asp-for="FTP" class="control-label"></label>
+                <input asp-for="FTP" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="FTP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlayerOwned" class="control-label"></label>
+                <input asp-for="PlayerOwned" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="PlayerOwned" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlockedShots" class="control-label"></label>
+                <input asp-for="BlockedShots" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="BlockedShots" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GameWon" class="control-label"></label>
+                <input asp-for="GameWon" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="GameWon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serie" class="control-label"></label>
+                <input asp-for="Serie" readonly class="form-control" style="background-color: #e9ecef;" />
+                <span asp-validation-for="Serie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

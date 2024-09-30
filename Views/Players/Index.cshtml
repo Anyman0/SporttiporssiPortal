@@ -1,0 +1,300 @@
+﻿@model IEnumerable<SporttiporssiPortal.Models.Player>
+
+@{
+    ViewData["Title"] = "Players";
+}
+
+<h1>Players</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Players" asp-action="Index" method="get">
+    <p>
+        Search by name or team: <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />    
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Player Id", "Index", new { sortOrder = ViewBag.PlayerIdSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Team Id", "Index", new { sortOrder = ViewBag.TeamIdSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Team Name", "Index", new { sortOrder = ViewBag.TeamNameSortParam })
+            </th>
+            <th>               
+                @Html.ActionLink("Short", "Index", new { sortOrder = ViewBag.TeamShortNameSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Role", "Index", new { sortOrder = ViewBag.RoleSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Nationality", "Index", new { sortOrder = ViewBag.NationalitySortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Tournament", "Index", new { sortOrder = ViewBag.TournamentSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Picture", "Index", new { sortOrder = ViewBag.PictureUrlSortParam })
+            </th>          
+            <th>
+                @Html.ActionLink("Injured", "Index", new { sortOrder = ViewBag.InjuredSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Jersey", "Index", new { sortOrder = ViewBag.JerseySortParam })
+            </th>           
+            <th>
+                @Html.ActionLink("GoalKeeper", "Index", new { sortOrder = ViewBag.GoalKeeperSortParam })
+            </th>           
+            <th>                
+                @Html.ActionLink("Played Games", "Index", new { sortOrder = ViewBag.PlayedGamesSortParam })
+            </th>         
+            <th>
+                @Html.ActionLink("Suspended", "Index", new { sortOrder = ViewBag.SuspendedSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Time On Ice", "Index", new { sortOrder = ViewBag.TimeOnIceSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Goals", "Index", new { sortOrder = ViewBag.GoalsSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Assists", "Index", new { sortOrder = ViewBag.AssistsSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Points", "Index", new { sortOrder = ViewBag.PointsSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Plus", "Index", new { sortOrder = ViewBag.PlusSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Minus", "Index", new { sortOrder = ViewBag.MinusSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Plus/Minus", "Index", new { sortOrder = ViewBag.PlusMinusSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Penalty Minutes", "Index", new { sortOrder = ViewBag.PenaltyMinutesSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Penalty 2", "Index", new { sortOrder = ViewBag.Penalty2SortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Penalty 10", "Index", new { sortOrder = ViewBag.Penalty10SortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Penalty 20", "Index", new { sortOrder = ViewBag.Penalty20SortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Winning Goals", "Index", new { sortOrder = ViewBag.WinningGoalsSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Shots", "Index", new { sortOrder = ViewBag.ShotsSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Saves", "Index", new { sortOrder = ViewBag.SavesSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Goalie Shutout", "Index", new { sortOrder = ViewBag.GoalieShutoutSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Allowed Goals", "Index", new { sortOrder = ViewBag.AllowedGoalsSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Faceoffs Won", "Index", new { sortOrder = ViewBag.FaceoffsWonSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Faceoffs Lost", "Index", new { sortOrder = ViewBag.FaceoffsLostSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Time On Ice Avg", "Index", new { sortOrder = ViewBag.TimeOnIceAvgSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Faceoff Won %", "Index", new { sortOrder = ViewBag.FaceoffWonPercentageSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Shot %", "Index", new { sortOrder = ViewBag.ShotPercentageSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Faceoffs Total", "Index", new { sortOrder = ViewBag.FaceoffsTotalSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Last Updated", "Index", new { sortOrder = ViewBag.LastUpdatedSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("FTP", "Index", new { sortOrder = ViewBag.FTPSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Player Owned", "Index", new { sortOrder = ViewBag.PlayerOwnedSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Blocked Shots", "Index", new { sortOrder = ViewBag.BlockedShotsSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Game Won", "Index", new { sortOrder = ViewBag.GameWonSortParam })
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamShortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tournament)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PictureUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Injured)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jersey)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Goalkeeper)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayedGames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Suspended)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOnIce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assists)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Points)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlusMinus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PenaltyMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Penalty2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Penalty10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Penalty20)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WinningGoals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shots)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Saves)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoalieShutout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllowedGoals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaceoffsWon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaceoffsLost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOnIceAvg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaceoffWonPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShotPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaceoffsTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FTP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerOwned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlockedShots)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameWon)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |                
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,132 @@
+﻿@model SporttiporssiPortal.Models.UpdatePlayer
+
+@{
+    ViewData["Title"] = "Update player stats";
+}
+
+<h1>Update player stats</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdatePlayer" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PlayerId" class="control-label"></label>
+                <input asp-for="PlayerId" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="PlayerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" readonly style="background-color: #e9ecef;" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Penalty2" class="control-label"></label>
+                <input asp-for="Penalty2" class="form-control" />
+                <span asp-validation-for="Penalty2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Penalty10" class="control-label"></label>
+                <input asp-for="Penalty10" class="form-control" />
+                <span asp-validation-for="Penalty10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Penalty20" class="control-label"></label>
+                <input asp-for="Penalty20" class="form-control" />
+                <span asp-validation-for="Penalty20" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Goals" class="control-label"></label>
+                <input asp-for="Goals" class="form-control" />
+                <span asp-validation-for="Goals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assists" class="control-label"></label>
+                <input asp-for="Assists" class="form-control" />
+                <span asp-validation-for="Assists" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Points" class="control-label"></label>
+                <input asp-for="Points" class="form-control" />
+                <span asp-validation-for="Points" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plus" class="control-label"></label>
+                <input asp-for="Plus" class="form-control" />
+                <span asp-validation-for="Plus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Minus" class="control-label"></label>
+                <input asp-for="Minus" class="form-control" />
+                <span asp-validation-for="Minus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shots" class="control-label"></label>
+                <input asp-for="Shots" class="form-control" />
+                <span asp-validation-for="Shots" class="text-danger"></span>
+            </div>            
+            @if(Model.Role == "KH" || Model.Role == "OL" || Model.Role == "VL")
+            {
+                <div class="form-group">
+                    <label asp-for="FaceoffsWon" class="control-label"></label>
+                    <input asp-for="FaceoffsWon" class="form-control" />
+                    <span asp-validation-for="FaceoffsWon" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FaceoffsLost" class="control-label"></label>
+                    <input asp-for="FaceoffsLost" class="form-control" />
+                    <span asp-validation-for="FaceoffsLost" class="text-danger"></span>
+                </div>
+            }    
+            @if(Model.Role != "MV")
+            {
+                <div class="form-group">
+                    <label asp-for="BlockedShots" class="control-label"></label>
+                    <input asp-for="BlockedShots" class="form-control" />
+                    <span asp-validation-for="BlockedShots" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TimeOnIceFormatted" class="control-label"></label>
+                    <input asp-for="TimeOnIceFormatted" class="form-control" />
+                    <span asp-validation-for="TimeOnIceFormatted" class="text-danger"></span>
+                </div>
+            }   
+            @if(Model.Role == "MV")
+            {                 
+               <div class="form-group">
+                   <label asp-for="Saves" class="control-label"></label>
+                   <input asp-for="Saves" class="form-control" />
+                   <span asp-validation-for="Saves" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                   <label asp-for="AllowedGoals" class="control-label"></label>
+                   <input asp-for="AllowedGoals" class="form-control" />
+                   <span asp-validation-for="AllowedGoals" class="text-danger"></span>
+               </div>
+               <div class="form-group form-check">
+                   <label class="form-check-label">
+                       <input class="form-check-input" asp-for="Win" /> @Html.DisplayNameFor(model => model.Win)
+                   </label>
+               </div>
+               <div class="form-group form-check">
+                   <label class="form-check-label">
+                       <input class="form-check-input" asp-for="Shutout" /> @Html.DisplayNameFor(model => model.Shutout)
+                   </label>
+               </div> 
+            }
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AddGame" /> @Html.DisplayNameFor(model => model.AddGame)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Game>
+
+@{
+    ViewData["Title"] = "Games";
+}
+
+<h2>Games On 
+    <form asp-action="ChangeDate" method="get" style="display: inline;">
+        <input type="date" name="date" value="@ViewBag.Date"
+               onchange="this.form.submit()" class="form-control-inline" />
+    </form>
+</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Home Team Goals</th>
+                <th>Away Team Goals</th>
+                <th>Start Time</th>
+                <th>Season</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var game in Model)
+            {
+                <tr>
+                    <td>@game.HomeTeamName</td>
+                    <td>@game.AwayTeamName</td>
+                    <td>@game.HomeTeamGoals</td>
+                    <td>@game.AwayTeamGoals</td>
+                    <td>@game.Start.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>@game.Season</td>
+                    <td>@game.LastUpdated.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>
+                        @if (!game.Ended)
+                        {
+                            <form asp-action="UpdateGame" method="post">
+                                <input type="hidden" name="id" value="@game.Id" />
+                                <input type="hidden" name="season" value="@game.Season"/>
+                                <button type="submit" class="btn btn-primary">Update Game</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success" disabled>Game Updated</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No games available for this date.</p>
+}

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<SporttiporssiPortal.Models.Player>
+
+@{
+    ViewData["Title"] = "Player stats";   
+}
+
+<h1>Player stats</h1>
+
+<form asp-controller="Stats" asp-action="Index" method="get">
+    <p>
+        Search by name or team: <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Player Id", "Index", new { sortOrder = ViewBag.PlayerIdSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Team Id", "Index", new { sortOrder = ViewBag.TeamIdSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Team Name", "Index", new { sortOrder = ViewBag.TeamNameSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Short", "Index", new { sortOrder = ViewBag.TeamShortNameSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Role", "Index", new { sortOrder = ViewBag.RoleSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParam })
+            </th>          
+            <th>
+                @Html.ActionLink("Jersey", "Index", new { sortOrder = ViewBag.JerseySortParam })
+            </th>      
+            <th>
+                @Html.ActionLink("GoalKeeper", "Index", new { sortOrder = ViewBag.GoalKeeperSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("LastUpdated", "Index", new { sortOrder = ViewBag.LastUpdated })
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlayerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamShortName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jersey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Goalkeeper)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdated)
+                </td>
+                <td>
+                    @if(item.LastUpdated.Date >= DateTime.Now.ToLocalTime().Date)
+                    {
+                        <form asp-action="Update" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input type="hidden" name="playerid" value="@item.PlayerId" />
+                            <input type="hidden" name="firstname" value="@item.FirstName" />
+                            <input type="hidden" name="lastname" value="@item.LastName" />
+                            <input type="hidden" name="role" value="@item.Role" />
+                            <button type="submit" class="btn btn-success">Update Stats</button>
+                        </form>                       
+                    }
+                    else if(item.LastUpdated.Date < DateTime.Now.ToLocalTime().Date)
+                    {
+                        <form asp-action="Update" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input type="hidden" name="playerid" value="@item.PlayerId" />
+                            <input type="hidden" name="firstname" value="@item.FirstName" />
+                            <input type="hidden" name="lastname" value="@item.LastName" />
+                            <input type="hidden" name="role" value="@item.Role" />
+                            <button type="submit" class="btn btn-primary">Update Stats</button>
+                        </form>
+                    }                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
